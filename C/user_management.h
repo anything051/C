@@ -3,43 +3,43 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include"init.h"
 
-// ¶¨Òå×´Ì¬Ãû³ÆÊı×é
+// å®šä¹‰çŠ¶æ€åç§°æ•°ç»„
 static const char* status_names[] = {
-    "ÆÕÍ¨ÓÃ»§", // status = 0
-    "½ÌÊ¦",     // status = 1
-    "ÀÏÈË",     // status = 2
-    "Ñ§Éú",     // status = 3
+    "æ™®é€šç”¨æˆ·", // status = 0
+    "æ•™å¸ˆ",     // status = 1
+    "è€äºº",     // status = 2
+    "å­¦ç”Ÿ",     // status = 3
     "SVIP"      // status = 4
 };
 
-// ÓÃ»§¹ÜÀí
-//¹¦ÄÜº¯Êı
+// ç”¨æˆ·ç®¡ç†
+//åŠŸèƒ½å‡½æ•°
 
-//ÓÃ»§ĞÅÏ¢Â¼Èë£ºÊµÏÖĞÂÓÃ»§ĞÅÏ¢µÄÂ¼Èë¹¦ÄÜ£¬°üÀ¨ÊäÈëÑéÖ¤¡£
+//ç”¨æˆ·ä¿¡æ¯å½•å…¥ï¼šå®ç°æ–°ç”¨æˆ·ä¿¡æ¯çš„å½•å…¥åŠŸèƒ½ï¼ŒåŒ…æ‹¬è¾“å…¥éªŒè¯ã€‚
 user* create_user(char* name, int sex, long long phone_num, int age, int status);
 void add_user(user* head, user* new_user);
 bool validate_user_info(char* name, int sex, long long phone_num, int age, int status);
 
-//ÓÃ»§ĞÅÏ¢²éÑ¯£ºÖ§³Ö¸ù¾İÓÃ»§ID¡¢ĞÕÃûµÈÌõ¼ş²éÑ¯ÓÃ»§ĞÅÏ¢¡£
+//ç”¨æˆ·ä¿¡æ¯æŸ¥è¯¢ï¼šæ”¯æŒæ ¹æ®ç”¨æˆ·IDã€å§“åç­‰æ¡ä»¶æŸ¥è¯¢ç”¨æˆ·ä¿¡æ¯ã€‚
 user* find_user_by_id(user* head, int id);
 user* find_user_by_name(user* head, char* name);
 user* find_user_by_phone(user* head, long long phone_num);
 void display_user(user* user_info);
 
-//ÓÃ»§ĞÅÏ¢ĞŞ¸Ä£ºÔÊĞíĞŞ¸ÄÓÃ»§µÄ²¿·ÖĞÅÏ¢£¬ÈçÁªÏµ·½Ê½µÈ¡£
+//ç”¨æˆ·ä¿¡æ¯ä¿®æ”¹ï¼šå…è®¸ä¿®æ”¹ç”¨æˆ·çš„éƒ¨åˆ†ä¿¡æ¯ï¼Œå¦‚è”ç³»æ–¹å¼ç­‰ã€‚
 bool update_user_name(user* user_info, char* new_name);
 bool update_user_phone(user* user_info, long long new_phone);
 bool update_user_status(user* user_info, int new_status);
 
-//ÓÃ»§ĞÅÏ¢É¾³ı£ºÉ¾³ı²»ÔÙÊ¹ÓÃµÄÓÃ»§ĞÅÏ¢¡£
+//ç”¨æˆ·ä¿¡æ¯åˆ é™¤ï¼šåˆ é™¤ä¸å†ä½¿ç”¨çš„ç”¨æˆ·ä¿¡æ¯ã€‚
 bool delete_user(user* head, int id);
 
-//ÓÃ»§¼¶±ğ¹ÜÀí£º¹ÜÀí²»Í¬¼¶±ğµÄÓÃ»§£¬ÉèÖÃ¶ÔÓ¦µÄ¼Æ·Ñ·½Ê½¡¢½áËã·½Ê½µÈ¡£
+//ç”¨æˆ·çº§åˆ«ç®¡ç†ï¼šç®¡ç†ä¸åŒçº§åˆ«çš„ç”¨æˆ·ï¼Œè®¾ç½®å¯¹åº”çš„è®¡è´¹æ–¹å¼ã€ç»“ç®—æ–¹å¼ç­‰ã€‚
 float calculate_fee(user* user_info, float base_fee);
 const char* get_status_name(int status);
 float get_discount_rate(int status);
 
-// ÓÃ»§Á´±í¹ÜÀí
+// ç”¨æˆ·é“¾è¡¨ç®¡ç†
 user* init_user_list();
 void free_user_list(user* head);
 void save_users_to_file(user* head, const char* filename);
@@ -48,12 +48,3 @@ user* load_users_from_file(const char* filename);
 
 
 
-
-/*»áÔ±ĞÅÏ¢ÏµÍ³²ã¼¶º¯ÊıÇø*/
-int user_account(char account[20]);/*¸öÈËÕË»§ĞÅÏ¢*/
-void member_log_up();/*»áÔ±×¢²áº¯Êı*/
-int member_log_in(char account[20]);/*»áÔ±µÇÂ¼º¯Êı*/
-void ADMIN_watch_member();/*²é¿´»áÔ±ĞÅÏ¢º¯Êı*/
-void display_memberbook();/*²é¿´ËùÓĞÍ¼Êé½èÔÄĞÅÏ¢º¯Êı*/
-int check_repeat_ID(char id_account[20]);/*¼ì²éÕË»§ÖØ¸´ĞÔº¯Êı*/
-void find_account();/*ÕË»§ÕÒ»Øº¯Êı*/
