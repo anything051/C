@@ -1,7 +1,16 @@
 #pragma once
 
+#define _CRT_SECURE_NO_WARNINGS
 #include"init.h"
 
+// 定义状态名称数组
+static const char* status_names[] = {
+    "普通用户", // status = 0
+    "教师",     // status = 1
+    "老人",     // status = 2
+    "学生",     // status = 3
+    "SVIP"      // status = 4
+};
 
 // 用户管理
 //功能函数
@@ -27,7 +36,7 @@ bool delete_user(user* head, int id);
 
 //用户级别管理：管理不同级别的用户，设置对应的计费方式、结算方式等。
 float calculate_fee(user* user_info, float base_fee);
-char* get_status_name(int status);
+const char* get_status_name(int status);
 float get_discount_rate(int status);
 
 // 用户链表管理

@@ -236,10 +236,10 @@ float calculate_fee(user* user_info, float base_fee) {
 }
 
 // 获取用户状态名称
-char* get_status_name(int status) {
+const char* get_status_name(int status) {
     switch (status) {
     case 0:
-        return "普通用户";
+        return "普通用户";  // 直接返回，无需转换
     case 1:
         return "教师";
     case 2:
@@ -264,9 +264,9 @@ float get_discount_rate(int status) {
     case 2: // 老人
         return 0.8f;
     case 3: // 学生
-        return 0.85f;
+        return 0.7f;
     case 4: // SVIP
-        return 0.75f;
+        return 0.6f;
     default:
         return 1.0f;
     }
